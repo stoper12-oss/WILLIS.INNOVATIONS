@@ -1,0 +1,51 @@
+[
+  {
+    "name": "AutoBuild",
+    "price": "$10 one-time",
+    "status": "In development",
+    "desc": "A local-first project builder that scans, understands, repairs, builds, tests and launches software projects.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
+  },
+  {
+    "name": "Subscription Crusher",
+    "price": "Price TBD",
+    "status": "In development",
+    "desc": "Find recurring charges, show their real monthly and yearly cost, and help users work through cancellations without fake success claims.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
+  },
+  {
+    "name": "PaperWork",
+    "price": "$10 one-time",
+    "status": "Planned",
+    "desc": "Drop in documents, receipts and scans. PaperWork handles the organizing and processing locally.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+  },
+  {
+    "name": "Inventory",
+    "price": "$10 one-time",
+    "status": "Planned",
+    "desc": "Straightforward inventory management with optional sync and integration with PaperWork.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+  },
+  {
+    "name": "The Investigator",
+    "price": "Price TBD",
+    "status": "Planned",
+    "desc": "Follow lawful public-information trails from a clue to sourced evidence, relationships and a readable report.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
+  },
+  {
+    "name": "PhotoRoyalties™",
+    "price": "Price TBD",
+    "status": "Planned",
+    "desc": "Prepare and distribute photography across supported royalty marketplaces with honest automation limits.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+  },
+  {
+    "name": "Credit Keeper™",
+    "price": "Price TBD",
+    "status": "Planned",
+    "desc": "Keep credit history and reports organized locally, with optional paid live-data services only when requested.",
+    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+  }
+]
