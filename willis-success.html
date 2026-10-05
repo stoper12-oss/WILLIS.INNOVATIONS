@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Purchase complete — Willis Innovations</title>
+<link rel="stylesheet" href="site.css">
+<style>
+.success-wrap{max-width:760px;margin:80px auto;padding:0 20px;text-align:center}
+.success-box{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px}
+.success-box h1{font-size:clamp(34px,7vw,56px);margin:8px 0 14px}
+.state{color:var(--muted);font-size:18px}
+.download-btn{display:inline-block;margin-top:20px;background:var(--blue);color:#00111d;font-weight:900;padding:14px 22px;border-radius:10px}
+.help{margin-top:18px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="./"><span class="wi">WI</span><span><b>WILLIS INNOVATIONS</b><small>REAL SOLUTIONS FOR REAL LIFE</small></span></a></header>
+<main class="success-wrap">
+<section class="success-box">
+<p class="eyebrow">PAYMENT RECEIVED</p>
+<h1>Preparing your download.</h1>
+<p id="state" class="state">Waiting for Stripe to confirm the order with our fulfillment service…</p>
+<div id="action"></div>
+<p class="help">Keep this page open. If delivery does not become ready, contact <a href="mailto:support@scios.site">support@scios.site</a> and include your Stripe receipt email.</p>
+</section>
+</main>
+<script src="store-config.js"></script>
+<script>
+(async()=>{
+  const cfg=window.WILLIS_STORE||{};
+  const origin=(cfg.fulfillmentOrigin||"").replace(/\/$/,"");
+  const params=new URLSearchParams(location.search);
+  const sid=params.get("session_id");
+  const state=document.getElementById("state");
+  const action=document.getElementById("action");
+  if(!sid||!/^cs_[A-Za-z0-9_]+$/.test(sid)){
+    state.textContent="The payment return link is missing its Checkout Session ID. Please use your Stripe receipt and contact support.";
+    return;
+  }
+  if(!origin){
+    state.textContent="Payment was received, but automatic delivery is temporarily unavailable. Please contact support with your Stripe receipt.";
+    return;
+  }
+  const endpoint=origin+"/api/fulfillment/session/"+encodeURIComponent(sid);
+  for(let attempt=0;attempt<30;attempt++){
+    try{
+      const r=await fetch(endpoint,{cache:"no-store",mode:"cors"});
+      if(r.status===202){
+        state.textContent="Payment confirmed by Stripe. Secure download is still being prepared…";
+      }else if(r.ok){
+        const d=await r.json();
+        if(d.status==="ready"&&d.download_url){
+          state.textContent=(d.product||"Your purchase")+" is ready.";
+          const a=document.createElement("a");
+          a.className="download-btn";
+          a.href=d.download_url;
+          a.textContent="Download now";
+          a.rel="noopener";
+          action.replaceChildren(a);
+          return;
+        }
+      }else{
+        const d=await r.json().catch(()=>({}));
+        state.textContent=d.error==="order_not_eligible"
+          ?"This order is not eligible for download. If you believe this is an error, contact support."
+          :"Secure delivery is not ready yet. Retrying…";
+      }
+    }catch{
+      state.textContent="The secure delivery service is waking up. Retrying…";
+    }
+    await new Promise(r=>setTimeout(r,2000));
+  }
+  state.textContent="Your payment may be complete, but automatic delivery did not become ready in time. Contact support with your Stripe receipt.";
+})();
+</script>
+</body>
+</html>
