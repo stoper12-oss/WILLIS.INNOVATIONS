@@ -1,8 +1,44 @@
-const fallback=[
-{name:"AutoBuild",price:"$10 one-time",status:"In development",desc:"Scan, understand, repair, build, test and launch software projects.",platforms:{Linux:1,Windows:1,Mac:1,Android:0,iPhone:0}},
-{name:"PaperWork",price:"$10 one-time",status:"Planned",desc:"Organize and process paperwork, receipts and scans with a local-first workflow.",platforms:{Linux:1,Windows:1,Mac:1,Android:1,iPhone:1}},
-{name:"Inventory",price:"$10 one-time",status:"Planned",desc:"Simple inventory management with optional sync and PaperWork integration.",platforms:{Linux:1,Windows:1,Mac:1,Android:1,iPhone:1}},
-{name:"The Investigator",price:"Price TBD",status:"Planned",desc:"Follow lawful public-information trails into sourced evidence and reports.",platforms:{Linux:1,Windows:1,Mac:1,Android:0,iPhone:0}},
-{name:"PhotoRoyalties™",price:"Price TBD",status:"Planned",desc:"Prepare photography for supported royalty marketplaces with honest automation limits.",platforms:{Linux:1,Windows:1,Mac:1,Android:1,iPhone:1}},
-{name:"Credit Keeper™",price:"Price TBD",status:"Planned",desc:"Keep credit history organized locally, with optional paid live-data services when requested.",platforms:{Linux:1,Windows:1,Mac:1,Android:1,iPhone:1}}
-];function render(items){document.querySelector("#product-grid").innerHTML=items.map(p=>`<article class="card"><span class="status">${p.status}</span><h3>${p.name}</h3><div class="price">${p.price}</div><p class="desc">${p.desc}</p><div class="platforms">${Object.entries(p.platforms).map(([n,on])=>`<span class="${on?"":"off"}">${n}</span>`).join("")}</div></article>`).join("")}fetch("products.json").then(r=>r.ok?r.json():Promise.reject()).then(render).catch(()=>render(fallback));document.querySelector("#year").textContent=new Date().getFullYear();
+const fallback=[];
+const cfg=window.WILLIS_STORE||{};
+const fulfillmentOrigin=(cfg.fulfillmentOrigin||"").replace(/\/$/,"");
+let checkoutReady=false;
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+
+async function checkFulfillment(){
+  if(!fulfillmentOrigin) return false;
+  try{
+    const r=await fetch(fulfillmentOrigin+"/healthz",{cache:"no-store",mode:"cors"});
+    const d=await r.json().catch(()=>({}));
+    return r.ok&&d.ok===true;
+  }catch{return false}
+}
+
+function render(items){
+  const grid=document.querySelector("#product-grid");
+  grid.innerHTML=items.map(p=>{
+    const platforms=Object.entries(p.platforms||{}).map(([n,on])=>`<span class="${on?"":"off"}">${esc(n)}</span>`).join("");
+    const details=p.url?`<a class="details" href="${esc(p.url)}">Details</a>`:"";
+    let action="";
+    if(p.buy_url){
+      action=checkoutReady
+        ? `<a class="buy" href="${esc(p.buy_url)}" rel="noopener">Buy now — ${esc(p.price)}</a><small class="delivery-note">Secure Stripe checkout · automatic private delivery after payment.</small>`
+        : `<button class="buy disabled" disabled>Checkout temporarily unavailable</button><small class="delivery-note">We will not take payment unless secure delivery is online.</small>`;
+    }else{
+      action=`<span class="coming">Not on sale yet</span>`;
+    }
+    return `<article class="card"><span class="status">${esc(p.status)}</span><h3>${esc(p.name)}</h3><div class="price">${esc(p.price)}</div><p class="desc">${esc(p.desc)}</p><div class="platforms">${platforms}</div><div class="card-actions">${details}${action}</div></article>`;
+  }).join("");
+}
+
+(async()=>{
+  let items=fallback;
+  try{
+    const r=await fetch("products.json",{cache:"no-store"});
+    if(r.ok) items=await r.json();
+  }catch{}
+  checkoutReady=await checkFulfillment();
+  render(items);
+})();
+
+document.querySelector("#year").textContent=new Date().getFullYear();

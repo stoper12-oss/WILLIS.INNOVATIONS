@@ -2,50 +2,299 @@
   {
     "name": "AutoBuild",
     "price": "$10 one-time",
-    "status": "In development",
-    "desc": "A local-first project builder that scans, understands, repairs, builds, tests and launches software projects.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
-  },
-  {
-    "name": "Subscription Crusher",
-    "price": "Price TBD",
-    "status": "In development",
-    "desc": "Find recurring charges, show their real monthly and yearly cost, and help users work through cancellations without fake success claims.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
+    "status": "Locally tested — Linux",
+    "desc": "Copy, scan, test and build trusted Python or Node projects; report failures and generate a launcher when possible.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/autobuild/",
+    "buy_url": "https://buy.stripe.com/dRm14mcGt4HLeaT1vm1Fe0d"
   },
   {
     "name": "PaperWork",
     "price": "$10 one-time",
-    "status": "Planned",
-    "desc": "Drop in documents, receipts and scans. PaperWork handles the organizing and processing locally.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+    "status": "Locally tested — Linux",
+    "desc": "Store original files locally, extract available text, suggest categories and search documents.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/paperwork/",
+    "buy_url": "https://buy.stripe.com/28EaEW0XL2zDc2Lgqg1Fe0e"
   },
   {
     "name": "Inventory",
     "price": "$10 one-time",
-    "status": "Planned",
-    "desc": "Straightforward inventory management with optional sync and integration with PaperWork.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+    "status": "Locally tested — Linux",
+    "desc": "Track stock by SKU with movement history, reorder levels, search, CSV export and full backup.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/inventory/",
+    "buy_url": "https://buy.stripe.com/4gMcN4cGt8Y1eaT6PG1Fe0f"
+  },
+  {
+    "name": "Invoice & Estimate",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Create, save, search and print invoices or estimates with tax, discount, CSV register and local backup.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/invoice-estimate/"
+  },
+  {
+    "name": "Subscription Crusher",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Track recurring costs and cancellation progress without claiming a cancellation succeeded.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/subscription-crusher/"
   },
   {
     "name": "The Investigator",
-    "price": "Price TBD",
-    "status": "Planned",
-    "desc": "Follow lawful public-information trails from a clue to sourced evidence, relationships and a readable report.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 0, "iPhone": 0}
+    "price": "$15 one-time",
+    "status": "Locally tested — Linux",
+    "desc": "Search lawful public sources, correlate possible matches, and export reports where every finding retains provenance.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/investigator/",
+    "buy_url": "https://buy.stripe.com/7sY28qdKx3DHd6Pfmc1Fe0g"
   },
   {
     "name": "PhotoRoyalties™",
     "price": "Price TBD",
-    "status": "Planned",
-    "desc": "Prepare and distribute photography across supported royalty marketplaces with honest automation limits.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+    "status": "Locally tested — Linux",
+    "desc": "Catalog photos locally, review metadata and releases, and export a manual marketplace handoff ZIP.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/photoroyalties/"
   },
   {
     "name": "Credit Keeper™",
     "price": "Price TBD",
-    "status": "Planned",
-    "desc": "Keep credit history and reports organized locally, with optional paid live-data services only when requested.",
-    "platforms": {"Linux": 1, "Windows": 1, "macOS": 1, "Android": 1, "iPhone": 1}
+    "status": "Locally tested — Linux",
+    "desc": "Keep account records and follow-up tasks in a password-encrypted local vault.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/credit-keeper/"
+  },
+  {
+    "name": "Easy Button Maker™",
+    "price": "Custom quote",
+    "status": "Locally tested — Linux",
+    "desc": "Create repeatable local buttons for file and folder chores, with dry runs, backups and logs.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/easy-button/"
+  },
+  {
+    "name": "MileTrack™",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Log vehicle trips with editable odometer records, search, print, CSV and backups.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/miletrack/"
+  },
+  {
+    "name": "Opportunity Miner™",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Watch user-chosen public RSS/Atom feeds, filter keywords and track leads locally.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/opportunity-miner/"
+  },
+  {
+    "name": "TimeCard",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Log shifts with start/end times, breaks, hours and estimated labor cost; export a backup.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/timecard/"
+  },
+  {
+    "name": "Receipt Crusher",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Store original receipts locally, review OCR suggestions, correct amounts and search expense totals.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/receipts/"
+  },
+  {
+    "name": "Warranty Crusher",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Track warranties and purchase references, search records, and export end dates to a calendar.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/warranty/"
+  },
+  {
+    "name": "CardSnap",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Scan card photos locally with OCR, correct contacts, and export vCards.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/cardsnap/"
+  },
+  {
+    "name": "MenuMaker",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Design a menu with sections, prices and descriptions; print it or save it as PDF, with backups.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/menumaker/"
+  },
+  {
+    "name": "BookIt",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Log appointments, flag overlaps, search records and export calendar events.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/bookit/"
+  },
+  {
+    "name": "Customers",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Track local customer contacts and status, search records and export vCards.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/customers/"
+  },
+  {
+    "name": "VoiceNote",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Record, save, replay, import and download voice memos locally in the browser.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/voicenote/"
+  },
+  {
+    "name": "PhotoClean",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Find exact and likely visual duplicate photos locally; export a report without deleting files.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/photoclean/"
+  },
+  {
+    "name": "FormMaker",
+    "price": "Price TBD",
+    "status": "Locally tested — Linux",
+    "desc": "Create typed local forms, save responses, print a blank form and export responses or backups.",
+    "platforms": {
+      "Linux": 1,
+      "Windows": 0,
+      "macOS": 0,
+      "Android": 0,
+      "iPhone": 0
+    },
+    "url": "products/formmaker/"
   }
 ]
